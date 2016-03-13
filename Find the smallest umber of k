@@ -74,7 +74,7 @@ int main()
 		cout<<s[i]<<" ";
 	}
 	cout<<endl;
-	int k=5;
+	int k=5;//最小的5个数
 	QuickSelect(s,k,0,sizeof(s)/sizeof(int)-1);
 	cout<<"----result:----"<<endl;
 	for (int m=0;m<k;m++)
