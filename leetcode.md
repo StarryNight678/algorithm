@@ -9,30 +9,6 @@ return [0, 1].
 
 
 ```
-// O(N^2) time 826 ms 打败 3.94%
-
-class Solution {
-public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        vector <int> result;
-        for(int i=0;i<nums.size();i++)
-        for(int j=i+1;j<nums.size();j++)
-        {
-            if( nums[i]+nums[j] = target)
-            {
-                result.insert(i);
-                result.insert(j);
-            }
-        }
-        return result;
-    }
-};
-
-```
-
-
-
-```
 //O(n)  Runtime: 13 ms   beats:77.81%
 class Solution {
 public:
@@ -59,3 +35,42 @@ public:
 };
 ```
 
+ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+    ListNode preHead(0), *p = &preHead;
+    int extra = 0;
+    while (l1 || l2 || extra) {
+        int sum = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + extra;
+        extra = sum / 10;
+        p->next = new ListNode(sum % 10);
+        p = p->next;
+        l1 = l1 ? l1->next : l1;
+        l2 = l2 ? l2->next : l2;
+    }
+    return preHead.next;
+}
+
+##2 Add Two Numbers
+
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+
+```
+// 32ms  beats:50%
+ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+    ListNode preHead(0), *p = &preHead;
+    int extra = 0;
+    while (l1 || l2 || extra) {
+        int sum = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + extra;
+        extra = sum / 10;
+        p->next = new ListNode(sum % 10);
+        p = p->next;
+        l1 = l1 ? l1->next : l1;
+        l2 = l2 ? l2->next : l2;
+    }
+    return preHead.next;
+}
+```
